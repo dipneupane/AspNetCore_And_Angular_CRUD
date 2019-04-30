@@ -1,0 +1,21 @@
+.header{
+    padding: 10px;    
+}
+.header i{
+    font-size: 20px;
+    margin-right: 10px;
+    color: #7fbb00;
+}
+.header i:hover{
+    cursor: pointer;
+    color: #7fbb00;
+}
+thead tr{
+    background-color:  #7fbb00;
+}
+thead tr th{
+    border-right: 1px solid #fff !important
+}
+.title{
+    font-style: normal;
+}

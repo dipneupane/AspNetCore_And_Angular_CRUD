@@ -1,0 +1,136 @@
+<div class="wrapper">
+  <div class="header">
+    <i class="fa fa-plus-circle" (click)="display='addNew'; title='Add New Student';" *ngIf="display==='list'"></i>
+    <i class="fa fa-arrow-circle-left" (click)="display='list'; title='Students Listing';"
+      *ngIf="display==='addNew'"></i>
+    <i class="title">{{title}}</i>
+  </div>
+  <hr>
+
+  <div class="listing" *ngIf="display==='list'">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>City</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentList">
+          <td>{{student.firstName}}</td>
+          <td>{{student.lastName}}</td>
+          <td>{{student.city}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.phoneNumber}}</td>
+          <td>
+            <span class="fa fa-edit" (click)="GetStudentById(student.id)"></span> &nbsp;
+            <span class="fa fa-trash" (click)="ConfirmDelete(student.id)"></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="addNew" *ngIf="display==='addNew'">
+
+    <form #form="ngForm" (ngSubmit)="form.form.valid && AddStudent(form)" autocomplete="off">
+      <input type="hidden" name="id" [(ngModel)]="student.id">
+      <div class="form-group col-sm-12 row">
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">First Name :</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="firstName" [(ngModel)]="student.firstName"
+              #firstName="ngModel" [ngClass]="{ 'is-invalid': form.submitted && firstName.invalid }" required />
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">Last Name :</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="lastName" [(ngModel)]="student.lastName" #lastName="ngModel"
+              [ngClass]="{ 'is-invalid': form.submitted && lastName.invalid }" required />
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">City :</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="city" [(ngModel)]="student.city" #city="ngModel"
+              [ngClass]="{ 'is-invalid': form.submitted && city.invalid }" required />
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-12 row">
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">Email</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="email" [(ngModel)]="student.email" #email="ngModel"
+              [ngClass]="{ 'is-invalid': form.submitted && email.invalid }" required />
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">Phone Number</label>
+          </div>
+          <div>
+            <input type="text" class="form-control" name="phoneNumber" [(ngModel)]="student.phoneNumber"
+              #phoneNumber="ngModel" [ngClass]="{ 'is-invalid': form.submitted && phoneNumber.invalid }" required />
+
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div>
+            <label class="control-label">Enrolled Date</label>
+          </div>
+          <div>
+            <input type="date" class="form-control" name="enrolledDate" [(ngModel)]="student.enrolledDate"
+              #enrolledDate="ngModel" [ngClass]="{ 'is-invalid': form.submitted && enrolledDate.invalid }" required />
+
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group col-sm-12 row">
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success">Save Information</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <div [className]="togglePopUp ? 'modal show' : 'modal fade'" [style.display]="togglePopUp ? 'block' : 'none'">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Confirm Delete !!!</h4>
+        </div>
+        <div class="modal-body">
+          Are you sure want to delete ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success btn-sm" (click)="DeleteStudent()">Yes</button>
+          <button type="button" class="btn btn-danger btn-sm" (click)="togglePopUp = false;">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

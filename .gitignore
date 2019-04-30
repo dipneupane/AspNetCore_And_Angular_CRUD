@@ -1,0 +1,5 @@
+# bin and obj
+/CRUD_Angular_and_AspNetCore/bin
+/CRUD_Angular_and_AspNetCore/obj
+/.vs
+
