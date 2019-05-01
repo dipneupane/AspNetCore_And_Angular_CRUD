@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CRUD_Angular_and_AspNetCore.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190430084526_InitialCreate")]
+    [Migration("20190430174750_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

@@ -19,3 +19,7 @@ thead tr th{
 .title{
     font-style: normal;
 }
+.mark{
+    text-align: center;
+    bottom: 0;
+}

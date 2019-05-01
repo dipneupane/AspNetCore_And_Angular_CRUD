@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ToastrManager } from 'ng6-toastr-notifications';
 import { StudentModel } from '../model/student.model';
 import { StudentCrudService } from '../service/StudentCRUD.service';
-import { ToastrManager } from 'ng6-toastr-notifications';
 
 @Component({
   selector: 'app-student',
